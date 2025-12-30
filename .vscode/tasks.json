@@ -2,9 +2,10 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run Active CPP",
+      "label": "Run Smart CPP",
       "type": "shell",
-      "command": "g++ \"${file}\" -o \"${fileDirname}/output_bin\" && \"${fileDirname}/output_bin\" < \"${fileDirname}/input.txt\" > \"${fileDirname}/output.txt\"",
+      // This script finds the most recently changed .cpp file in the folder
+      "command": "CPP_FILE=$(ls -t *.cpp | head -n 1) && g++ \"$CPP_FILE\" -o \"output_bin\" && ./output_bin < input.txt > output.txt",
       "group": {
         "kind": "build",
         "isDefault": true
