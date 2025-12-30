@@ -1,0 +1,8 @@
+# Ignore compiled binaries
+output_bin
+*.exe
+test
+test2
+
+# Ignore Mac system files
+.DS_Store

@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Active CPP",
+      "type": "shell",
+      "command": "g++ \"${file}\" -o \"${fileDirname}/output_bin\" && \"${fileDirname}/output_bin\" < \"${fileDirname}/input.txt\" > \"${fileDirname}/output.txt\"",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared",
+        "focus": false,
+        "echo": false
+      },
+      "problemMatcher": "$gcc"
+    }
+  ]
+}
