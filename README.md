@@ -2,6 +2,8 @@
 
 This repository contains my automated C++ environment for Competitive Programming. It is designed to allow side-by-side coding, input entry, and output viewing with a single keyboard shortcut.
 
+![VS Code Competitive Programming Setup](images/setup.png)
+
 ## 🛠 Requirements
 
 Before running this setup on a new Mac device, you must install the following:
