@@ -1,6 +1,6 @@
-# C++ Competitive Programming Setup (Mac)
+# C++ problem solving Setup (Mac)
 
-This repository contains my automated C++ environment for Competitive Programming. It is designed to allow side-by-side coding, input entry, and output viewing with a single keyboard shortcut.
+This repository contains my automated C++ environment for problem solving. It is designed to allow side-by-side coding, input entry, and output viewing with a single keyboard shortcut.
 
 ![VS Code Competitive Programming Setup](images/setUp.png)
 
