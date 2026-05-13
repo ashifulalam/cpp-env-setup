@@ -49,6 +49,14 @@ if [ ! -f "$INPUT_FILE" ]; then
   exit 1
 fi
 
+if ! grep -q '[^[:space:]]' "$PROBLEM_FILE"; then
+  > "$INPUT_FILE"
+  > "$OUTPUT_FILE"
+  printf "\n"
+  printf "Problem file is empty. Cleared input.txt and output.txt.\n"
+  exit 0
+fi
+
 print_result() {
   printf "\n"
   printf "Problem runner finished\n"

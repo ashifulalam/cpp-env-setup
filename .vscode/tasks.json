@@ -2,6 +2,29 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Auto Clear Watcher",
+      "type": "shell",
+      "command": "node .vscode/auto-clear-watcher.js",
+      "isBackground": true,
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "never",
+        "panel": "dedicated"
+      },
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Watching testJS.js",
+          "endsPattern": "for auto-clear..."
+        }
+      }
+    },
+    {
       "label": "Run Active Problem File",
       "type": "shell",
       // Runs the active .cpp/.js file, or the latest .cpp/.js file when input.txt is active.
