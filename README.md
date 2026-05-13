@@ -1,12 +1,23 @@
 # C++ and JavaScript Problem Solving Setup
 
-This repository contains a small VS Code playground for solving programming problems in both C++ and JavaScript. It uses one shared input file, one shared output file, and one build task that automatically chooses the correct runner based on the file you are working on.
+This playground is for solving programming problems in C++ and JavaScript from one VS Code/Antigravity workspace. It uses one shared `input.txt`, one shared `output.txt`, and one build task that decides whether to run C++ or JavaScript from the active file.
 
 ![VS Code Competitive Programming Setup](images/setUp.png)
 
+## What This Setup Does
+
+- Runs `.cpp` files with `g++`.
+- Runs `.js` files with Node.js.
+- Reads test input from `input.txt`.
+- Writes program output to `output.txt`.
+- Shows language, file name, and runtime in the terminal.
+- Optionally asks Gemini to estimate time and space complexity after a successful run.
+- Clears `input.txt` and `output.txt` when the active problem file is empty.
+- Keeps generated binaries, secrets, and optional folders hidden from the workspace Explorer where possible.
+
 ## New Mac Setup
 
-Install these tools on a new Mac before using the playground:
+Install these tools before using the playground on a new Mac:
 
 1. **Command Line Tools (Clang/G++):**
    ```bash
@@ -16,10 +27,10 @@ Install these tools on a new Mac before using the playground:
    ```bash
    node --version
    ```
-3. **Visual Studio Code:** Download from [code.visualstudio.com](https://code.visualstudio.com/).
-4. **C/C++ Extension:** Install the Microsoft C/C++ extension in VS Code.
+3. **VS Code or Antigravity**
+4. **C/C++ Extension:** Install the Microsoft C/C++ extension.
 
-Before using the runner, these commands should work in the VS Code terminal:
+You can verify the required tools with:
 
 ```bash
 g++ --version
@@ -27,39 +38,39 @@ node --version
 bash --version
 ```
 
-You can also run the setup checker:
-
-```bash
-./setup-check.sh
-```
-
-The setup checker verifies the required tools, starts the Command Line Tools installer if needed, installs Homebrew when it is missing, installs Node.js through Homebrew when needed, and makes the runner executable.
-
-To run it on a new Mac:
+Or run the setup checker:
 
 ```bash
 cd /path/to/playGround
-chmod +x setup-check.sh
-./setup-check.sh
+chmod +x scripts/setup-check.sh
+./scripts/setup-check.sh
 ```
 
 Replace `/path/to/playGround` with the folder location on that Mac.
 
-## How to Use
+The setup checker verifies the required tools, starts the Command Line Tools installer if needed, installs Homebrew when it is missing, installs Node.js through Homebrew when needed, and makes the runner executable.
 
-### 1. Recommended Layout
+## Daily Workflow
 
-- Open `testcpp.cpp` or `testJS.js` on the **left**.
-- Open `input.txt` on the **top right**.
-- Open `output.txt` on the **bottom right**.
+### 1. Open The Workspace
 
-### 2. Running Code
+Open `cppWorkspace.code-workspace` instead of opening the folder directly. This applies the project-specific workspace settings.
+
+### 2. Use This Layout
+
+- Open `testcpp.cpp` or `testJS.js` on the left.
+- Open `input.txt` on the top right.
+- Open `output.txt` on the bottom right.
+
+The workspace file helps the editor remember this layout when you close and reopen the project.
+
+### 3. Run Code
 
 The default build task in `.vscode/tasks.json` calls `.vscode/run-active-problem.sh`.
 
-- If the active file is `.cpp`, it compiles and runs the C++ file.
-- If the active file is `.js`, it runs the JavaScript file with Node.js.
-- If the active file is `input.txt`, it runs the most recently modified `.cpp` or `.js` file in this folder.
+- If the active file is `.cpp`, the runner compiles and runs that C++ file.
+- If the active file is `.js`, the runner runs that JavaScript file with Node.js.
+- If the active file is `input.txt`, the runner uses the most recently modified `.cpp` or `.js` file.
 
 The task always reads from:
 
@@ -73,9 +84,36 @@ The task always writes to:
 output.txt
 ```
 
-After each run, the terminal shows the language, file name, input file, output file, and runtime duration. If C++ compilation fails or a program crashes, the terminal shows a clearer failure summary after the original compiler/runtime error.
+After a successful run, the terminal looks like:
 
-## Shortcut
+```text
+Problem runner finished
+Language : JavaScript
+File     : testJS.js
+Runtime  : 0.053s
+```
+
+If C++ compilation fails, JavaScript crashes, or `input.txt` is missing, the runner prints a clearer failure message in the terminal.
+
+### 4. Empty File Auto-Clear
+
+If the active `.cpp` or `.js` file is empty, the runner clears both shared test files:
+
+```text
+input.txt
+output.txt
+```
+
+The workspace also has an `Auto Clear Watcher` task in `.vscode/tasks.json`. It starts when the folder opens and watches the root practice files:
+
+```text
+testJS.js
+testcpp.cpp
+```
+
+When either file becomes empty, the watcher clears `input.txt` and `output.txt`. This keeps stale input/output from staying around after you reset a practice file.
+
+## Cmd + R Shortcut
 
 By default, VS Code uses `Cmd + Shift + B` to run the build task.
 
@@ -91,15 +129,95 @@ To run this playground with `Cmd + R`:
 
 After this, `Cmd + R` runs the active `.cpp` or `.js` problem file and updates `output.txt`.
 
-## File Structure
+## Gemini Complexity Estimate
 
-- `.vscode/tasks.json` - VS Code build task.
-- `.vscode/run-active-problem.sh` - Detects and runs C++ or JavaScript files.
-- `cppWorkspace.code-workspace` - Workspace settings for this playground.
-- `setup-check.sh` - Checks and installs missing Mac dependencies.
-- `problems/` - Optional folder for organizing solved problems.
-- `testcpp.cpp` - Sample C++ problem file.
-- `testJS.js` - Sample JavaScript problem file.
-- `input.txt` - Place test cases here.
-- `output.txt` - Results appear here automatically.
-- `images/setUp.png` - Workspace screenshot.
+The runner can ask Gemini to estimate time and space complexity after a successful run.
+
+Create a local config file:
+
+```bash
+cp config/.env.example config/.env
+```
+
+Then edit `config/.env`:
+
+```text
+GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_MODEL=gemini-2.5-flash
+```
+
+`config/.env` is ignored by git. Keep your real API key there only. Do not put a real key in `config/.env.example`.
+
+When enabled, the terminal prints:
+
+```text
+Estimated complexity
+Time     : O(n)
+Space    : O(n)
+Reason   : The solution scans the array once and stores seen values in a map.
+```
+
+This is an AI estimate, not a mathematical guarantee. Use it as a helpful review.
+
+## File And Folder Guide
+
+- `.vscode/tasks.json` - VS Code build task configuration.
+- `.vscode/run-active-problem.sh` - Main runner for C++ and JavaScript.
+- `.vscode/complexity-check.js` - Gemini-powered complexity estimator.
+- `.vscode/auto-clear-watcher.js` - Clears shared input/output when root practice files become empty.
+- `.vscode/settings.json` - Small editor settings for this workspace.
+- `config/.env` - Your local Gemini API key file. Ignored by git.
+- `config/.env.example` - Safe template showing which environment variables are needed.
+- `cppWorkspace.code-workspace` - Workspace settings for layout restore and Explorer cleanup.
+- `scripts/setup-check.sh` - Mac setup checker.
+- `problems/` - Optional folder for saved solutions.
+- `testcpp.cpp` - Active scratch C++ problem file.
+- `testJS.js` - Active scratch JavaScript problem file.
+- `input.txt` - Shared test input file.
+- `output.txt` - Shared program output file.
+- `images/` - README screenshot assets. Hidden from Explorer by workspace settings.
+
+## Explorer Cleanup
+
+`cppWorkspace.code-workspace` uses `files.exclude` to keep the Explorer clean.
+
+Inside `files.exclude`:
+
+```jsonc
+"some-file-or-folder": true
+```
+
+means hide it from the Explorer.
+
+```jsonc
+"some-file-or-folder": false
+```
+
+means explicitly show it.
+
+These settings only change what you see in the editor. They do not delete files and do not affect git.
+
+Currently hidden examples include:
+
+- `.git`
+- `.vscode`
+- `.gitignore`
+- `config`
+- `scripts`
+- generated C++ binaries such as `output_bin`
+- `images`
+- `.env` files outside the visible config flow
+
+To unhide a file or folder later, change its value to `false` or remove that line from `files.exclude`.
+
+## Git Safety
+
+- `config/.env` is ignored so the Gemini API key is not uploaded.
+- Generated binaries are ignored so C++ runs do not pollute git status.
+- `config/.env.example` is safe to commit because it contains placeholders only.
+
+Before committing, it is good to check:
+
+```bash
+git status --short
+```
