@@ -8,6 +8,30 @@
 		"workbench.editor.restoreViewState": true,
 		"workbench.editor.enablePreview": false,
 		"workbench.editor.revealIfOpen": true,
-		"workbench.startupEditor": "none"
+		"workbench.startupEditor": "none",
+		// Explorer cleanup for this workspace.
+		// true  = hide the matching file/folder from the Explorer.
+		// false = explicitly show it, even if another setting hides it.
+		// To unhide something later, change its value to false or remove that line.
+		// These rules only affect the editor view; they do not delete files or affect git.
+		"files.exclude": {
+			// Hidden files
+			"**/.DS_Store": true,
+			".env": true,
+			"**/.git": true,
+			"**/.gitignore": true,
+			"problems/README.md": true,
+
+			// Generated build files
+			"**/output_bin": true,
+			"**/output_bin.exe": true,
+			"**/output_bin.dSYM": true,
+
+			// Hidden folders
+			"**/.vscode": true,
+			"config": true,
+			"images": true,
+			"scripts": true
+		}
 	}
 }
