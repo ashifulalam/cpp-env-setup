@@ -1,55 +1,78 @@
-# C++ problem solving Setup (Mac)
+# C++ and JavaScript Problem Solving Setup
 
-This repository contains my automated C++ environment for problem solving. It is designed to allow side-by-side coding, input entry, and output viewing with a single keyboard shortcut.
+This repository contains a small VS Code playground for solving programming problems in both C++ and JavaScript. It uses one shared input file, one shared output file, and one build task that automatically chooses the correct runner based on the file you are working on.
 
 ![VS Code Competitive Programming Setup](images/setUp.png)
 
-## 🛠 Requirements
+## New Mac Setup
 
-Before running this setup on a new Mac device, install the following:
+Install these tools on a new Mac before using the playground:
 
-1.  **Command Line Tools (Clang/G++):**
-    ```bash
-    xcode-select --install
-    ```
-2.  **Visual Studio Code:** Download from [here](https://code.visualstudio.com/).
-3.  **C/C++ Extension:** Install the Microsoft C/C++ extension in VS Code.
+1. **Command Line Tools (Clang/G++):**
+   ```bash
+   xcode-select --install
+   ```
+2. **Node.js:** Install from [nodejs.org](https://nodejs.org/), then check:
+   ```bash
+   node --version
+   ```
+3. **Visual Studio Code:** Download from [code.visualstudio.com](https://code.visualstudio.com/).
+4. **C/C++ Extension:** Install the Microsoft C/C++ extension in VS Code.
 
----
+Before using the runner, these commands should work in the VS Code terminal:
 
-## 🚀 How to Use
+```bash
+g++ --version
+node --version
+bash --version
+```
 
-### 1. The Layout
+## How to Use
 
-- Open your `.cpp` file on the **left**.
+### 1. Recommended Layout
+
+- Open `testcpp.cpp` or `testJS.js` on the **left**.
 - Open `input.txt` on the **top right**.
 - Open `output.txt` on the **bottom right**.
 
 ### 2. Running Code
 
-The "Smart Task" in `.vscode/tasks.json` automatically finds the most recently modified `.cpp` file. This means you can trigger the run even while your cursor is inside `input.txt`.
+The default build task in `.vscode/tasks.json` calls `.vscode/run-active-problem.sh`.
 
-- **Shortcut:** `Cmd + R` (See configuration below)
-- **What happens:** 1. Compiles the latest `.cpp` file. 2. Pipes `input.txt` into the program. 3. Updates `output.txt` instantly. 4. Terminal remains hidden for a clean workspace.
+- If the active file is `.cpp`, it compiles and runs the C++ file.
+- If the active file is `.js`, it runs the JavaScript file with Node.js.
+- If the active file is `input.txt`, it runs the most recently modified `.cpp` or `.js` file in this folder.
 
----
+The task always reads from:
 
-## ⌨️ Setting up the Shortcut (Important)
+```text
+input.txt
+```
 
-By default, VS Code uses `Cmd + Shift + B` for builds. To change it to **`Cmd + R`** on a new device:
+The task always writes to:
 
-1.  In VS Code, press `Cmd + K` then `Cmd + S` to open **Keyboard Shortcuts**.
-2.  Search for `Tasks: Run Build Task`.
-3.  Click the **plus (+)** or **pencil icon** to change the binding.
-4.  Press **`Cmd + R`** and hit **Enter**.
-5.  **Conflict Check:** If `Cmd + R` is tied to "Reload Window," right-click that entry and select **Remove Keybinding** to allow your build task to run.
+```text
+output.txt
+```
 
----
+## Shortcut
 
-## 📂 File Structure
+By default, VS Code uses `Cmd + Shift + B` for the build task.
 
-- `.vscode/` - Contains `tasks.json` (The "Smart" build logic).
-- `images/setUp.png` - Workspace screenshot.
+To use `Cmd + R` instead:
+
+1. In VS Code, press `Cmd + K`, then `Cmd + S`.
+2. Search for `Tasks: Run Build Task`.
+3. Click the plus or pencil icon to change the keybinding.
+4. Press `Cmd + R` and hit Enter.
+5. If `Cmd + R` conflicts with Reload Window, remove the old Reload Window keybinding.
+
+## File Structure
+
+- `.vscode/tasks.json` - VS Code build task.
+- `.vscode/run-active-problem.sh` - Detects and runs C++ or JavaScript files.
+- `testcpp.cpp` - Sample C++ problem file.
+- `testJS.js` - Sample JavaScript problem file.
 - `input.txt` - Place test cases here.
 - `output.txt` - Results appear here automatically.
-- `*.cpp` - Your C++ source files.
+- `images/setUp.png` - Workspace screenshot.

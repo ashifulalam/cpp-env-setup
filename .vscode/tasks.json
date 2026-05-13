@@ -2,16 +2,16 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run Smart CPP",
+      "label": "Run Active Problem File",
       "type": "shell",
-      // This script finds the most recently changed .cpp file in the folder
-      "command": "CPP_FILE=$(ls -t *.cpp | head -n 1) && g++ \"$CPP_FILE\" -o \"output_bin\" && ./output_bin < input.txt > output.txt",
+      // Runs the active .cpp/.js file, or the latest .cpp/.js file when input.txt is active.
+      "command": "bash .vscode/run-active-problem.sh \"${file}\"",
       "group": {
         "kind": "build",
         "isDefault": true
       },
       "presentation": {
-        "reveal": "never",
+        "reveal": "always",
         "panel": "shared",
         "focus": false,
         "echo": false
