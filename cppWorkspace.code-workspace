@@ -29,7 +29,7 @@
 
 			// Hidden folders
 			"**/.vscode": true,
-			"config": true,
+			"config": false,
 			"images": true,
 			"scripts": true
 		}
