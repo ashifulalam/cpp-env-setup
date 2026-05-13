@@ -144,9 +144,15 @@ Then edit `config/.env`:
 ```text
 GEMINI_API_KEY=your_gemini_api_key_here
 GEMINI_MODEL=gemini-2.5-flash
+COMPLEXITY_ENABLED=true
+COMPLEXITY_CACHE_ENABLED=true
 ```
 
 `config/.env` is ignored by git. Keep your real API key there only. Do not put a real key in `config/.env.example`.
+
+Use `COMPLEXITY_ENABLED=false` when you want to run code without asking Gemini for a complexity estimate.
+
+Use `COMPLEXITY_CACHE_ENABLED=true` to avoid repeated Gemini calls for unchanged code. The checker stores cached estimates in `config/.complexity-cache.json`, which is ignored by git.
 
 When enabled, the terminal prints:
 
@@ -155,6 +161,12 @@ Estimated complexity
 Time     : O(n)
 Space    : O(n)
 Reason   : The solution scans the array once and stores seen values in a map.
+```
+
+If the same code is run again and caching is enabled, the heading shows:
+
+```text
+Estimated complexity (cached)
 ```
 
 This is an AI estimate, not a mathematical guarantee. Use it as a helpful review.
@@ -168,6 +180,7 @@ This is an AI estimate, not a mathematical guarantee. Use it as a helpful review
 - `.vscode/settings.json` - Small editor settings for this workspace.
 - `config/.env` - Your local Gemini API key file. Ignored by git.
 - `config/.env.example` - Safe template showing which environment variables are needed.
+- `config/.complexity-cache.json` - Local Gemini estimate cache. Ignored by git.
 - `cppWorkspace.code-workspace` - Workspace settings for layout restore and Explorer cleanup.
 - `scripts/setup-check.sh` - Mac setup checker.
 - `problems/` - Optional folder for saved solutions.
