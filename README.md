@@ -4,7 +4,7 @@ This playground is for solving programming problems in C++ and JavaScript from o
 
 ![VS Code Competitive Programming Setup](images/setUp.png)
 
-## What This Setup Does
+## 1. What This Setup Does
 
 - Runs `.cpp` files with `g++`.
 - Runs `.js` files with Node.js.
@@ -15,9 +15,9 @@ This playground is for solving programming problems in C++ and JavaScript from o
 - Clears `input.txt` and `output.txt` when the active problem file is empty.
 - Keeps generated binaries, secrets, and optional folders hidden from the workspace Explorer where possible.
 
-## New Mac Setup
+## 2. First-Time Setup On A New Mac
 
-Install these tools before using the playground on a new Mac:
+Install these tools before using the playground:
 
 1. **Command Line Tools (Clang/G++):**
    ```bash
@@ -30,7 +30,7 @@ Install these tools before using the playground on a new Mac:
 3. **VS Code or Antigravity**
 4. **C/C++ Extension:** Install the Microsoft C/C++ extension.
 
-You can verify the required tools with:
+You can verify the required tools manually:
 
 ```bash
 g++ --version
@@ -38,7 +38,7 @@ node --version
 bash --version
 ```
 
-Or run the setup checker:
+Or run the setup checker from the playground folder:
 
 ```bash
 cd /path/to/playGround
@@ -50,21 +50,19 @@ Replace `/path/to/playGround` with the folder location on that Mac.
 
 The setup checker verifies the required tools, starts the Command Line Tools installer if needed, installs Homebrew when it is missing, installs Node.js through Homebrew when needed, and makes the runner executable.
 
-## Daily Workflow
-
-### 1. Open The Workspace
+## 3. Open The Workspace
 
 Open `cppWorkspace.code-workspace` instead of opening the folder directly. This applies the project-specific workspace settings.
 
-### 2. Use This Layout
+The workspace file helps the editor remember your preferred layout when you close and reopen the project.
+
+Recommended layout:
 
 - Open `testcpp.cpp` or `testJS.js` on the left.
 - Open `input.txt` on the top right.
 - Open `output.txt` on the bottom right.
 
-The workspace file helps the editor remember this layout when you close and reopen the project.
-
-### 3. Run Code
+## 4. Run Code
 
 The default build task in `.vscode/tasks.json` calls `.vscode/run-active-problem.sh`.
 
@@ -95,25 +93,7 @@ Runtime  : 0.053s
 
 If C++ compilation fails, JavaScript crashes, or `input.txt` is missing, the runner prints a clearer failure message in the terminal.
 
-### 4. Empty File Auto-Clear
-
-If the active `.cpp` or `.js` file is empty, the runner clears both shared test files:
-
-```text
-input.txt
-output.txt
-```
-
-The workspace also has an `Auto Clear Watcher` task in `.vscode/tasks.json`. It starts when the folder opens and watches the root practice files:
-
-```text
-testJS.js
-testcpp.cpp
-```
-
-When either file becomes empty, the watcher clears `input.txt` and `output.txt`. This keeps stale input/output from staying around after you reset a practice file.
-
-## Cmd + R Shortcut
+## 5. Set Up The Cmd + R Shortcut
 
 By default, VS Code uses `Cmd + Shift + B` to run the build task.
 
@@ -129,7 +109,7 @@ To run this playground with `Cmd + R`:
 
 After this, `Cmd + R` runs the active `.cpp` or `.js` problem file and updates `output.txt`.
 
-## Gemini Complexity Estimate
+## 6. Optional Gemini Complexity Estimate
 
 The runner can ask Gemini to estimate time and space complexity after a successful run.
 
@@ -171,7 +151,25 @@ Estimated complexity (cached)
 
 This is an AI estimate, not a mathematical guarantee. Use it as a helpful review.
 
-## File And Folder Guide
+## 7. Empty File Auto-Clear
+
+If the active `.cpp` or `.js` file is empty, the runner clears both shared test files:
+
+```text
+input.txt
+output.txt
+```
+
+The workspace also has an `Auto Clear Watcher` task in `.vscode/tasks.json`. It starts when the folder opens and watches the root practice files:
+
+```text
+testJS.js
+testcpp.cpp
+```
+
+When either file becomes empty, the watcher clears `input.txt` and `output.txt`. This keeps stale input/output from staying around after you reset a practice file.
+
+## 8. File And Folder Guide
 
 - `.vscode/tasks.json` - VS Code build task configuration.
 - `.vscode/run-active-problem.sh` - Main runner for C++ and JavaScript.
@@ -190,7 +188,7 @@ This is an AI estimate, not a mathematical guarantee. Use it as a helpful review
 - `output.txt` - Shared program output file.
 - `images/` - README screenshot assets. Hidden from Explorer by workspace settings.
 
-## Explorer Cleanup
+## 9. Explorer Cleanup
 
 `cppWorkspace.code-workspace` uses `files.exclude` to keep the Explorer clean.
 
@@ -223,9 +221,10 @@ Currently hidden examples include:
 
 To unhide a file or folder later, change its value to `false` or remove that line from `files.exclude`.
 
-## Git Safety
+## 10. Git Safety
 
 - `config/.env` is ignored so the Gemini API key is not uploaded.
+- `config/.complexity-cache.json` is ignored so local Gemini cache data is not uploaded.
 - Generated binaries are ignored so C++ runs do not pollute git status.
 - `config/.env.example` is safe to commit because it contains placeholders only.
 
