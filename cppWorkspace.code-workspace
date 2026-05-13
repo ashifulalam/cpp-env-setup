@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.editor.restoreViewState": true,
+		"workbench.editor.enablePreview": false,
+		"workbench.editor.revealIfOpen": true,
+		"workbench.startupEditor": "none"
+	}
+}
