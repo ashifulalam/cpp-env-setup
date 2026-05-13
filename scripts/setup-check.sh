@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 RUNNER="$ROOT_DIR/.vscode/run-active-problem.sh"
 
 print_step() {
@@ -36,7 +36,7 @@ install_homebrew() {
 
   if ! load_homebrew; then
     echo "Homebrew was installed, but it is not available in PATH yet."
-    echo "Restart the terminal, then run ./setup-check.sh again."
+    echo "Restart the terminal, then run ./scripts/setup-check.sh again."
     exit 1
   fi
 }
@@ -48,7 +48,7 @@ install_command_line_tools() {
 
   print_step "Command Line Tools are missing. Starting Apple's installer..."
   xcode-select --install || true
-  echo "Finish the Command Line Tools installer, then run ./setup-check.sh again."
+  echo "Finish the Command Line Tools installer, then run ./scripts/setup-check.sh again."
   exit 1
 }
 
