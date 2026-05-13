@@ -215,11 +215,24 @@ Currently hidden examples include:
 - `.gitignore`
 - `config`
 - `scripts`
+- README files
 - generated C++ binaries such as `output_bin`
 - `images`
 - `.env` files outside the visible config flow
 
 To unhide a file or folder later, change its value to `false` or remove that line from `files.exclude`.
+
+For example, to show README files in the Explorer again, change:
+
+```jsonc
+"**/README.md": true
+```
+
+to:
+
+```jsonc
+"**/README.md": false
+```
 
 ## 10. Git Safety
 

@@ -14,13 +14,13 @@
 		// false = explicitly show it, even if another setting hides it.
 		// To unhide something later, change its value to false or remove that line.
 		// These rules only affect the editor view; they do not delete files or affect git.
+
 		"files.exclude": {
 			// Hidden files
 			"**/.DS_Store": true,
 			".env": true,
 			"**/.git": true,
 			"**/.gitignore": true,
-			"problems/README.md": true,
 
 			// Generated build files
 			"**/output_bin": true,
@@ -29,9 +29,13 @@
 
 			// Hidden folders
 			"**/.vscode": true,
-			"config": false,
+			"config": true,
 			"images": true,
-			"scripts": true
+			"scripts": true,
+
+			// README files
+			"problems/README.md": true,
+			"**/README.md": true
 		}
 	}
 }
