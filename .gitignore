@@ -1,6 +1,9 @@
 # Ignore compiled binaries
 output_bin
+output_bin.exe
+output_bin.dSYM/
 *.exe
+*.out
 test
 test2
 
