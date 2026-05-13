@@ -9,3 +9,7 @@ test2
 
 # Ignore Mac system files
 .DS_Store
+
+# Ignore local secrets
+.env
+config/.env

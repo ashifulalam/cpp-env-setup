@@ -66,6 +66,10 @@ print_failure() {
   printf "Runtime  : %s\n" "$(format_duration "$3")"
 }
 
+print_complexity_estimate() {
+  node "$WORKSPACE_DIR/.vscode/complexity-check.js" "$PROBLEM_FILE" || true
+}
+
 case "$PROBLEM_FILE" in
   *.cpp)
     START_MS="$(now_ms)"
@@ -91,6 +95,7 @@ case "$PROBLEM_FILE" in
 
     END_MS="$(now_ms)"
     print_result "C++" "$((END_MS - START_MS))"
+    print_complexity_estimate
     ;;
   *.js)
     START_MS="$(now_ms)"
@@ -106,5 +111,6 @@ case "$PROBLEM_FILE" in
 
     END_MS="$(now_ms)"
     print_result "JavaScript" "$((END_MS - START_MS))"
+    print_complexity_estimate
     ;;
 esac
