@@ -55,6 +55,7 @@ The runner decides what to execute:
 
 - [Setup Guide](docs/setup.md)
 - [Codespaces Guide](docs/codespaces.md)
+- [New Problem](docs/new-problem.md)
 - [Running Code](docs/running-code.md)
 - [Shortcut Guide](docs/shortcuts.md)
 - [Gemini Complexity Estimate](docs/gemini-complexity.md)

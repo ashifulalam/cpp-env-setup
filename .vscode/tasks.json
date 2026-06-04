@@ -42,6 +42,18 @@
       "problemMatcher": "$gcc"
     },
     {
+      "label": "New Problem",
+      "type": "shell",
+      "command": "node .vscode/new-problem.js",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": true,
+        "echo": false
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "Toggle Explorer Cleanup",
       "type": "shell",
       "command": "node .vscode/toggle-explorer-cleanup.js",

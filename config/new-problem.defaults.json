@@ -1,0 +1,6 @@
+{
+  "folders": ["nsups", "codewars", "hackerrank", "leetcode"],
+  "languages": ["cpp", "js"],
+  "defaultFolder": "nsups",
+  "defaultLanguage": "cpp"
+}
