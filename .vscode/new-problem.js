@@ -51,54 +51,35 @@ function orderedChoices(items, preferred) {
   return unique([preferred, ...items]);
 }
 
-function renderMenu(question, choices, selectedIndex) {
-  readline.cursorTo(process.stdout, 0);
-  readline.clearScreenDown(process.stdout);
-  process.stdout.write(`${question}\n`);
-
-  choices.forEach((choice, index) => {
-    process.stdout.write(`${index === selectedIndex ? "> " : "  "}${choice}\n`);
-  });
-}
+let promptInterface;
+let pipedAnswers;
 
 function choose(question, choices) {
   if (!process.stdin.isTTY) {
     return Promise.resolve(choices[0]);
   }
 
-  return new Promise((resolve) => {
-    let selectedIndex = 0;
+  process.stdout.write(`${question}\n`);
+  choices.forEach((choice, index) => {
+    process.stdout.write(`  ${index + 1}. ${choice}\n`);
+  });
 
-    readline.emitKeypressEvents(process.stdin);
-    process.stdin.setRawMode(true);
-    renderMenu(question, choices, selectedIndex);
+  return ask("Select number (Enter for 1): ").then((answer) => {
+    if (!answer) {
+      process.stdout.write(`Selected: ${choices[0]}\n\n`);
+      return choices[0];
+    }
 
-    const onKeypress = (_str, key) => {
-      if (key.name === "up") {
-        selectedIndex = (selectedIndex - 1 + choices.length) % choices.length;
-        renderMenu(question, choices, selectedIndex);
-      } else if (key.name === "down") {
-        selectedIndex = (selectedIndex + 1) % choices.length;
-        renderMenu(question, choices, selectedIndex);
-      } else if (key.name === "return") {
-        process.stdin.setRawMode(false);
-        process.stdin.off("keypress", onKeypress);
-        process.stdout.write(`\nSelected: ${choices[selectedIndex]}\n\n`);
-        resolve(choices[selectedIndex]);
-      } else if (key.ctrl && key.name === "c") {
-        process.stdin.setRawMode(false);
-        process.stdin.off("keypress", onKeypress);
-        process.stdout.write("\nCancelled.\n");
-        process.exit(130);
-      }
-    };
+    const index = Number(answer) - 1;
+    if (!Number.isInteger(index) || index < 0 || index >= choices.length) {
+      console.error(`Invalid choice: ${answer}`);
+      process.exit(1);
+    }
 
-    process.stdin.on("keypress", onKeypress);
+    process.stdout.write(`Selected: ${choices[index]}\n\n`);
+    return choices[index];
   });
 }
-
-let promptInterface;
-let pipedAnswers;
 
 function nextPipedAnswer() {
   if (!pipedAnswers) {

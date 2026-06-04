@@ -10,8 +10,8 @@ Create a templated problem file from a VS Code task.
 
 ## Flow
 
-1. Choose folder with arrow keys.
-2. Choose language with arrow keys.
+1. Choose folder by number.
+2. Choose language by number.
 3. Enter problem link.
 4. Enter problem title.
 
