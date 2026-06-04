@@ -66,26 +66,6 @@
     Check output.txt
     ```
 
-## Windows
-
-Install:
-
-1. **Git for Windows:** Install from [git-scm.com](https://git-scm.com/). Git Bash must be available.
-2. **C++ compiler:** Install MSYS2/MinGW-w64 or another `g++` provider.
-3. **Node.js:** Install from [nodejs.org](https://nodejs.org/).
-4. **VS Code**
-5. **C/C++ Extension:** Install the Microsoft C/C++ extension.
-
-Verify from the VS Code terminal:
-
-```bash
-bash --version
-g++ --version
-node --version
-```
-
-Requirement: `bash`, `g++`, and `node` must be available in PATH.
-
 ## Workspace
 
 Open `cppWorkspace.code-workspace`.
