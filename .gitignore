@@ -14,3 +14,4 @@ test2
 .env
 config/.env
 config/.complexity-cache.json
+config/.last-problem-file

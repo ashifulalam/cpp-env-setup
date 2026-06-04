@@ -6,6 +6,7 @@ ACTIVE_FILE="${1:-}"
 INPUT_FILE="$WORKSPACE_DIR/input.txt"
 OUTPUT_FILE="$WORKSPACE_DIR/output.txt"
 BIN_FILE="$WORKSPACE_DIR/output_bin"
+LAST_PROBLEM_FILE="$WORKSPACE_DIR/config/.last-problem-file"
 
 now_ms() {
   perl -MTime::HiRes=time -e 'printf "%.0f\n", time() * 1000'
@@ -30,6 +31,10 @@ pick_latest_problem_file() {
     -not -path "*/node_modules/*" \
     -print0 |
     while IFS= read -r -d '' file; do
+      if ! grep -q '[^[:space:]]' "$file"; then
+        continue
+      fi
+
       printf "%s\t%s\n" "$(file_mtime "$file")" "$file"
     done |
     sort -rn |
@@ -37,12 +42,33 @@ pick_latest_problem_file() {
     cut -f 2-
 }
 
+remember_problem_file() {
+  mkdir -p "$(dirname "$LAST_PROBLEM_FILE")"
+  printf "%s\n" "$PROBLEM_FILE" > "$LAST_PROBLEM_FILE"
+}
+
+pick_remembered_problem_file() {
+  if [ ! -f "$LAST_PROBLEM_FILE" ]; then
+    return
+  fi
+
+  local remembered_file
+  remembered_file="$(cat "$LAST_PROBLEM_FILE")"
+
+  if [ -f "$remembered_file" ] && grep -q '[^[:space:]]' "$remembered_file"; then
+    printf "%s\n" "$remembered_file"
+  fi
+}
+
 case "$ACTIVE_FILE" in
   *.cpp | *.js)
     PROBLEM_FILE="$ACTIVE_FILE"
     ;;
   *)
-    PROBLEM_FILE="$(pick_latest_problem_file)"
+    PROBLEM_FILE="$(pick_remembered_problem_file)"
+    if [ -z "${PROBLEM_FILE:-}" ]; then
+      PROBLEM_FILE="$(pick_latest_problem_file)"
+    fi
     ;;
 esac
 
@@ -64,6 +90,8 @@ if ! grep -q '[^[:space:]]' "$PROBLEM_FILE"; then
   printf "Problem file is empty. Cleared input.txt and output.txt.\n"
   exit 0
 fi
+
+remember_problem_file
 
 print_result() {
   printf "\n"
