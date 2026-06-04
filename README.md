@@ -36,21 +36,6 @@ After running a problem file once, you can run again while focused on `input.txt
 | Mac browser | `Cmd + Shift + B` | GitHub Codespaces shortcut. |
 | Windows browser | `Ctrl + Shift + B` | GitHub Codespaces shortcut. |
 
-## How It Runs
-
-The default build task calls:
-
-```bash
-.vscode/run-active-problem.sh
-```
-
-The runner decides what to execute:
-
-- Active `.cpp` file: compile and run with `g++`.
-- Active `.js` file: run with Node.js.
-- Active `input.txt` or `output.txt`: re-run the last problem file.
-- No remembered problem file: use the most recently modified non-empty `.cpp` or `.js` file.
-
 ## Documentation
 
 - [Setup Guide](docs/setup.md)
