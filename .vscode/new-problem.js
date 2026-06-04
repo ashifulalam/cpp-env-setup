@@ -134,7 +134,7 @@ function today() {
 }
 
 function cppTemplate({ title, link, date }) {
-  return `/*\n * Problem  : ${title}\n * Link     : ${link}\n * Date     : ${date}\n * Resources:\n *   -\n */\n\n#include <bits/stdc++.h>\nusing namespace std;\n\nint main(){\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    return 0;\n}\n`;
+  return `/*\n * Problem  : ${title}\n * Link     : ${link}\n * Date     : ${date}\n * Resources:\n *   -\n */\n\n#include <bits/stdc++.h>\nusing namespace std;\n\nint main(){\n    \n    return 0;\n}\n`;
 }
 
 function jsTemplate({ title, link, date }) {
