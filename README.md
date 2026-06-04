@@ -116,13 +116,13 @@ If C++ compilation fails, JavaScript crashes, or `input.txt` is missing, the run
 
 Use these shortcuts to run the same default build task:
 
-| Environment | Run shortcut | Notes |
+| Where you are using it | Run shortcut | Notes |
 | --- | --- | --- |
-| macOS local VS Code | `Cmd + R` | Use this after setting up the custom shortcut below. |
-| macOS local default | `Cmd + Shift + B` | Built-in VS Code build task shortcut. |
-| Windows local VS Code | `Ctrl + Shift + B` | Built-in VS Code build task shortcut. |
-| GitHub Codespaces on Windows/Linux | `Ctrl + Shift + B` | Browser-safe shortcut for the same runner. |
-| GitHub Codespaces on Mac | `Cmd + Shift + B` | Browser-safe shortcut for the same runner. |
+| Mac app | `Cmd + R` | Your custom local shortcut after setup. |
+| Mac app backup | `Cmd + Shift + B` | VS Code's default build task shortcut. |
+| Windows app | `Ctrl + Shift + B` | VS Code's default build task shortcut. |
+| Mac browser | `Cmd + Shift + B` | Use this in GitHub Codespaces. |
+| Windows browser | `Ctrl + Shift + B` | Use this in GitHub Codespaces. |
 
 The functionality is the same in each place:
 
