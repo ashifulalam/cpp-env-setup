@@ -1,0 +1,29 @@
+confusing topic 
+---------------------
+for in - this loop is used in object, array 
+for of - this loop is used in for loop
+switch case - already forget the topic
+
+
+
+
+
+
+
+Difficult problem
+------------------
+12,
+
+
+-------------------
+indexOf(searchElement, fromIndex-optional) ---->
+lastIndexOf(searchValue, startIndex-optional) <----
+
+indexOf,lastIndexOf,search
+
+split(" ",3)
+
+charAt('9')
+charCodeAt(from char to unicode)
+string.fromCharCode(uni code to char)
+
