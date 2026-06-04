@@ -26,30 +26,6 @@ OneBugAway uses one shared `input.txt`, one shared `output.txt`, and one default
 
 After running a problem file once, you can run again while focused on `input.txt` or `output.txt`.
 
-## Create Problem File
-
-From VS Code:
-
-```text
-Cmd + Shift + P
-Tasks: Run Task
-New Problem
-```
-
-From terminal:
-
-```bash
-cd /Users/ashifulalam/Documents/workSpace/playGround
-node .vscode/new-problem.js
-```
-
-Optional `~/.zshrc` shortcuts:
-
-```bash
-alias ps='cd /Users/ashifulalam/Documents/workSpace/playGround'
-alias np='cd /Users/ashifulalam/Documents/workSpace/playGround && node .vscode/new-problem.js'
-```
-
 ## Shortcuts
 
 | Where you are using it | Run shortcut | Notes |
@@ -79,6 +55,7 @@ The runner decides what to execute:
 
 - [Setup Guide](docs/setup.md)
 - [Codespaces Guide](docs/codespaces.md)
+- [Tools](docs/tools.md)
 - [New Problem](docs/new-problem.md)
 - [Running Code](docs/running-code.md)
 - [Shortcut Guide](docs/shortcuts.md)
