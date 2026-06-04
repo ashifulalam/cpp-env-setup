@@ -22,6 +22,12 @@ When either file becomes empty, it clears `input.txt` and `output.txt`.
 
 `cppWorkspace.code-workspace` uses `files.exclude`.
 
+Toggle all cleanup rules:
+
+1. Open Command Palette.
+2. Run `Tasks: Run Task`.
+3. Select `Toggle Explorer Cleanup`.
+
 ```jsonc
 "some-file-or-folder": true
 ```

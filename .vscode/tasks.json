@@ -40,6 +40,18 @@
         "echo": false
       },
       "problemMatcher": "$gcc"
+    },
+    {
+      "label": "Toggle Explorer Cleanup",
+      "type": "shell",
+      "command": "node .vscode/toggle-explorer-cleanup.js",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": false,
+        "echo": false
+      },
+      "problemMatcher": []
     }
   ]
 }
