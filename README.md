@@ -1,10 +1,10 @@
-# AlgoGym
+# OneBugAway
 
 A focused C++ and JavaScript problem-solving workspace for local VS Code and GitHub Codespaces.
 
-AlgoGym uses one shared `input.txt`, one shared `output.txt`, and one default build task that runs the active C++ or JavaScript problem file.
+OneBugAway uses one shared `input.txt`, one shared `output.txt`, and one default build task that runs the active C++ or JavaScript problem file.
 
-![AlgoGym problem-solving workspace](images/algogym-hero.svg)
+![OneBugAway problem-solving workspace](images/one-bug-away-hero.svg)
 
 ## Features
 
