@@ -66,39 +66,6 @@
     Check output.txt
     ```
 
-## macOS
-
-Install:
-
-1. **Command Line Tools (Clang/G++):**
-   ```bash
-   xcode-select --install
-   ```
-2. **Node.js:** Install from [nodejs.org](https://nodejs.org/), then check:
-   ```bash
-   node --version
-   ```
-3. **VS Code or Antigravity**
-4. **C/C++ Extension:** Install the Microsoft C/C++ extension.
-
-Verify:
-
-```bash
-g++ --version
-node --version
-bash --version
-```
-
-Optional setup checker:
-
-```bash
-cd /path/to/playGround
-chmod +x scripts/setup-check.sh
-./scripts/setup-check.sh
-```
-
-The checker verifies tools, installs missing basics where possible, and makes the runner executable.
-
 ## Windows
 
 Install:
