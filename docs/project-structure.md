@@ -1,31 +1,29 @@
 # Project Structure
 
-## Important Files
+## Files
 
 - `.vscode/tasks.json` - VS Code build task configuration.
-- `.vscode/run-active-problem.sh` - Main runner for C++ and JavaScript.
+- `.vscode/run-active-problem.sh` - C++/JavaScript runner.
 - `.vscode/complexity-check.js` - Gemini-powered complexity estimator.
-- `.vscode/auto-clear-watcher.js` - Clears shared input/output when root practice files become empty.
-- `.vscode/settings.json` - Small editor settings for this workspace.
+- `.vscode/auto-clear-watcher.js` - Clears shared input/output when scratch files become empty.
+- `.vscode/settings.json` - Editor settings.
 - `.devcontainer/devcontainer.json` - GitHub Codespaces environment.
-- `config/.env` - Your local Gemini API key file. Ignored by git.
-- `config/.env.example` - Safe template showing which environment variables are needed.
-- `config/.complexity-cache.json` - Local Gemini estimate cache. Ignored by git.
-- `config/.last-problem-file` - Last problem file used by the runner. Ignored by git.
-- `cppWorkspace.code-workspace` - Workspace settings for layout restore and Explorer cleanup.
+- `config/.env` - Local Gemini API key file. Ignored by git.
+- `config/.env.example` - Safe environment template.
+- `config/.complexity-cache.json` - Gemini cache. Ignored by git.
+- `config/.last-problem-file` - Last runner target. Ignored by git.
+- `cppWorkspace.code-workspace` - Layout and Explorer settings.
 - `scripts/setup-check.sh` - Mac setup checker.
 - `problems/` - Saved problem solutions.
-- `testcpp.cpp` - Active scratch C++ problem file.
-- `testJS.js` - Active scratch JavaScript problem file.
-- `input.txt` - Shared test input file.
-- `output.txt` - Shared program output file.
-- `images/` - README screenshot assets.
+- `testcpp.cpp` - Scratch C++ file.
+- `testJS.js` - Scratch JavaScript file.
+- `input.txt` - Shared input.
+- `output.txt` - Shared output.
+- `images/` - README assets.
 
-## Problems Folder
+## Problems
 
-Use `problems/` to keep solved problems organized by platform, topic, or contest.
-
-Example names:
+Organize saved solutions by platform, topic, or contest:
 
 ```text
 problems/codewars/

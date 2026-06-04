@@ -1,29 +1,22 @@
 # Running Code
 
-The default build task in `.vscode/tasks.json` calls `.vscode/run-active-problem.sh`.
+Default task: `.vscode/run-active-problem.sh`.
 
-## Runner Behavior
+## Behavior
 
-- If the active file is `.cpp`, the runner compiles and runs that C++ file.
-- If the active file is `.js`, the runner runs that JavaScript file with Node.js.
-- If the active file is `input.txt` or `output.txt`, the runner reuses the last `.cpp` or `.js` problem file you ran.
-- If there is no remembered problem file yet, the runner falls back to the most recently modified non-empty `.cpp` or `.js` file.
+- Active `.cpp`: compile and run with `g++`.
+- Active `.js`: run with Node.js.
+- Active `input.txt` or `output.txt`: re-run the last problem file.
+- No remembered problem: run the most recently modified non-empty `.cpp` or `.js` file.
 
-The task always reads from:
-
-```text
-input.txt
-```
-
-The task always writes to:
+## Files
 
 ```text
-output.txt
+input.txt   -> program input
+output.txt  -> program output
 ```
 
-## Successful Run
-
-After a successful run, the terminal looks like:
+## Terminal Output
 
 ```text
 Problem runner finished
@@ -32,6 +25,4 @@ File     : testJS.js
 Runtime  : 0.053s
 ```
 
-## Failed Run
-
-If C++ compilation fails, JavaScript crashes, or `input.txt` is missing, the runner prints a clearer failure message in the terminal.
+Failures print the language, file name, reason, and runtime.
