@@ -28,8 +28,10 @@
 			"**/output_bin.dSYM": true,
 
 			// Hidden folders
+			"**/.devcontainer": true,
 			"**/.vscode": true,
 			"config": true,
+			"docs": true,
 			"images": true,
 			"scripts": true,
 
