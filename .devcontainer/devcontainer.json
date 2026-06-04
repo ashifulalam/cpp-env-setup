@@ -1,0 +1,23 @@
+{
+  "name": "Problem Solving Workspace",
+  "image": "mcr.microsoft.com/devcontainers/cpp:1-debian-12",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools"
+      ],
+      "settings": {
+        "editor.wordWrap": "on",
+        "[plaintext]": {
+          "editor.fontSize": 18
+        }
+      }
+    }
+  },
+  "postCreateCommand": "chmod +x .vscode/run-active-problem.sh scripts/setup-check.sh"
+}

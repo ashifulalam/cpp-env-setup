@@ -93,7 +93,20 @@ Runtime  : 0.053s
 
 If C++ compilation fails, JavaScript crashes, or `input.txt` is missing, the runner prints a clearer failure message in the terminal.
 
-## 5. Set Up The Cmd + R Shortcut
+## 5. Use In GitHub Codespaces
+
+This repository includes a dev container so GitHub Codespaces opens with C++, Node.js, and the recommended C/C++ extension ready to use.
+
+In Codespaces, use the same runner workflow:
+
+1. Put sample input in `input.txt`.
+2. Open the `.cpp` or `.js` problem file you want to run.
+3. Press `Ctrl + Shift + B` on Windows/Linux or `Cmd + Shift + B` on Mac.
+4. Check the result in `output.txt`.
+
+The Codespaces shortcut runs the same default build task as the local setup. Browser shortcuts such as `Ctrl + R` or `Cmd + R` usually reload the page, so keep those for the local desktop app only.
+
+## 6. Set Up The Cmd + R Shortcut
 
 By default, VS Code uses `Cmd + Shift + B` to run the build task.
 
@@ -109,7 +122,7 @@ To run this playground with `Cmd + R`:
 
 After this, `Cmd + R` runs the active `.cpp` or `.js` problem file and updates `output.txt`.
 
-## 6. Optional Gemini Complexity Estimate
+## 7. Optional Gemini Complexity Estimate
 
 The runner can ask Gemini to estimate time and space complexity after a successful run.
 
@@ -151,7 +164,7 @@ Estimated complexity (cached)
 
 This is an AI estimate, not a mathematical guarantee. Use it as a helpful review.
 
-## 7. Empty File Auto-Clear
+## 8. Empty File Auto-Clear
 
 If the active `.cpp` or `.js` file is empty, the runner clears both shared test files:
 
@@ -169,7 +182,7 @@ testcpp.cpp
 
 When either file becomes empty, the watcher clears `input.txt` and `output.txt`. This keeps stale input/output from staying around after you reset a practice file.
 
-## 8. File And Folder Guide
+## 9. File And Folder Guide
 
 - `.vscode/tasks.json` - VS Code build task configuration.
 - `.vscode/run-active-problem.sh` - Main runner for C++ and JavaScript.
@@ -188,7 +201,7 @@ When either file becomes empty, the watcher clears `input.txt` and `output.txt`.
 - `output.txt` - Shared program output file.
 - `images/` - README screenshot assets. Hidden from Explorer by workspace settings.
 
-## 9. Explorer Cleanup
+## 10. Explorer Cleanup
 
 `cppWorkspace.code-workspace` uses `files.exclude` to keep the Explorer clean.
 
@@ -234,7 +247,7 @@ to:
 "**/README.md": false
 ```
 
-## 10. Git Safety
+## 11. Git Safety
 
 - `config/.env` is ignored so the Gemini API key is not uploaded.
 - `config/.complexity-cache.json` is ignored so local Gemini cache data is not uploaded.
