@@ -15,6 +15,14 @@ format_duration() {
   awk "BEGIN { printf \"%.3fs\", $1 / 1000 }"
 }
 
+file_mtime() {
+  if stat -f "%m" "$1" >/dev/null 2>&1; then
+    stat -f "%m" "$1"
+  else
+    stat -c "%Y" "$1"
+  fi
+}
+
 pick_latest_problem_file() {
   find "$WORKSPACE_DIR" \
     -type f \( -name "*.cpp" -o -name "*.js" \) \
@@ -22,7 +30,7 @@ pick_latest_problem_file() {
     -not -path "*/node_modules/*" \
     -print0 |
     while IFS= read -r -d '' file; do
-      printf "%s\t%s\n" "$(stat -f "%m" "$file")" "$file"
+      printf "%s\t%s\n" "$(file_mtime "$file")" "$file"
     done |
     sort -rn |
     head -n 1 |
