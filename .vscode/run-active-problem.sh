@@ -60,15 +60,39 @@ pick_remembered_problem_file() {
   fi
 }
 
+pick_problem_for_shared_io() {
+  local remembered_file latest_file
+  remembered_file="$(pick_remembered_problem_file || true)"
+  latest_file="$(pick_latest_problem_file || true)"
+
+  if [ -z "${remembered_file:-}" ]; then
+    printf "%s\n" "$latest_file"
+    return
+  fi
+
+  if [ -z "${latest_file:-}" ]; then
+    printf "%s\n" "$remembered_file"
+    return
+  fi
+
+  if [ "$latest_file" = "$remembered_file" ]; then
+    printf "%s\n" "$remembered_file"
+    return
+  fi
+
+  if [ "$(file_mtime "$latest_file")" -gt "$(file_mtime "$remembered_file")" ]; then
+    printf "%s\n" "$latest_file"
+  else
+    printf "%s\n" "$remembered_file"
+  fi
+}
+
 case "$ACTIVE_FILE" in
   *.cpp | *.js)
     PROBLEM_FILE="$ACTIVE_FILE"
     ;;
   *)
-    PROBLEM_FILE="$(pick_remembered_problem_file)"
-    if [ -z "${PROBLEM_FILE:-}" ]; then
-      PROBLEM_FILE="$(pick_latest_problem_file)"
-    fi
+    PROBLEM_FILE="$(pick_problem_for_shared_io)"
     ;;
 esac
 
