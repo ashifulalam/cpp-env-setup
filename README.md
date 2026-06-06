@@ -16,8 +16,8 @@ A minimal C++ and JavaScript problem-solving workspace for VS Code and GitHub Co
 
 | Environment | Shortcut |
 | --- | --- |
+| VS Code Command Palette | `Cmd + Shift + P` |
 | macOS local custom shortcut | `Cmd + R` |
-| macOS local default task | `Cmd + Shift + B` |
 | Windows/Linux local default task with Bash | `Ctrl + Shift + B` |
 | Codespaces on macOS | `Cmd + Shift + B` |
 | Codespaces on Windows/Linux | `Ctrl + Shift + B` |
