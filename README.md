@@ -1,66 +1,54 @@
 # OneBugAway
 
-A focused C++ and JavaScript problem-solving workspace for local VS Code and GitHub Codespaces.
-
-OneBugAway uses one shared `input.txt`, one shared `output.txt`, and one default build task that runs the active C++ or JavaScript problem file.
+A minimal C++ and JavaScript problem-solving workspace for VS Code and GitHub Codespaces.
 
 ![OneBugAway problem-solving workspace](images/one-bug-away-hero.svg)
-
-## Features
-
-- Run `.cpp` files with `g++`.
-- Run `.js` files with Node.js.
-- Read sample input from `input.txt`.
-- Write program output to `output.txt`.
-- Re-run from `input.txt` or `output.txt` using the last problem file.
-- Use the same workflow on Mac, Windows, and GitHub Codespaces.
-- Optionally estimate time and space complexity with Gemini.
 
 ## Quick Start
 
 1. Open `cppWorkspace.code-workspace`.
-2. Put sample input in `input.txt`.
-3. Open the `.cpp` or `.js` problem file you want to run.
-4. Press the shortcut for your environment.
-5. Check the result in `output.txt`.
+2. Open a `.cpp` or `.js` problem file.
+3. Put sample input in `input.txt`.
+4. Run the build task.
+5. Read the result from `output.txt`.
 
-After running a problem file once, you can run again while focused on `input.txt` or `output.txt`.
+## Run Shortcuts
 
-## Shortcuts
+| Environment | Shortcut |
+| --- | --- |
+| macOS local custom shortcut | `Cmd + R` |
+| macOS local default task | `Cmd + Shift + B` |
+| Windows/Linux local default task with Bash | `Ctrl + Shift + B` |
+| Codespaces on macOS | `Cmd + Shift + B` |
+| Codespaces on Windows/Linux | `Ctrl + Shift + B` |
 
-| Where you are using it | Run shortcut | Notes |
-| --- | --- | --- |
-| Mac app | `Cmd + R` | Custom local shortcut after setup. |
-| Mac app backup | `Cmd + Shift + B` | VS Code default build task shortcut. |
-| Windows app | `Ctrl + Shift + B` | VS Code default build task shortcut. |
-| Mac browser | `Cmd + Shift + B` | GitHub Codespaces shortcut. |
-| Windows browser | `Ctrl + Shift + B` | GitHub Codespaces shortcut. |
+After running a problem once, you can focus `input.txt` or `output.txt` and run again. The runner reuses the current problem file.
 
-## Documentation
+## Common Tasks
 
-- [Setup Guide](docs/setup.md)
-- [Codespaces Guide](docs/codespaces.md)
-- [Tools](docs/tools.md)
-- [New Problem](docs/new-problem.md)
-- [Running Code](docs/running-code.md)
-- [Shortcut Guide](docs/shortcuts.md)
-- [Gemini Complexity Estimate](docs/gemini-complexity.md)
-- [Project Structure](docs/project-structure.md)
-- [Workspace Cleanup](docs/workspace-cleanup.md)
-- [Git Safety](docs/git-safety.md)
+1. Set up locally: [docs/setup.md](docs/setup.md)
+2. Run code: [docs/running-code.md](docs/running-code.md)
+3. Create a problem file: [docs/new-problem.md](docs/new-problem.md)
+4. Use Codespaces: [docs/codespaces.md](docs/codespaces.md)
+5. Configure shortcuts: [docs/shortcuts.md](docs/shortcuts.md)
+6. Enable Gemini complexity estimates: [docs/gemini-complexity.md](docs/gemini-complexity.md)
+7. Review helper tasks: [docs/tools.md](docs/tools.md)
+8. Check project files: [docs/project-structure.md](docs/project-structure.md)
+9. Manage Explorer cleanup: [docs/workspace-cleanup.md](docs/workspace-cleanup.md)
+10. Check git safety: [docs/git-safety.md](docs/git-safety.md)
 
-## Repository Layout
+## Project Map
 
 ```text
-.
-|-- .devcontainer/              # GitHub Codespaces environment
-|-- .vscode/                    # Runner, tasks, and editor settings
-|-- config/                     # Local Gemini configuration
-|-- docs/                       # Detailed documentation
-|-- problems/                   # Saved problem solutions
-|-- scripts/                    # Setup helper scripts
-|-- input.txt                   # Shared sample input
-|-- output.txt                  # Shared program output
-|-- testJS.js                   # Scratch JavaScript file
-`-- testcpp.cpp                 # Scratch C++ file
+.vscode/                    VS Code tasks and helper scripts
+.devcontainer/              Codespaces setup
+config/                     Local config and ignored state
+docs/                       Workspace guides
+problems/                   Saved problem solutions
+problems/templates/         New-problem templates
+scripts/setup-check.sh      macOS setup checker
+input.txt                   Shared sample input
+output.txt                  Shared program output
+testcpp.cpp                 Scratch C++ file
+testJS.js                   Scratch JavaScript file
 ```

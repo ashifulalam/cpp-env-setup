@@ -1,21 +1,19 @@
-# Setup Guide
+# Setup
 
-## Fresh Mac Checklist
+Use this for local macOS setup. For browser setup, use [codespaces.md](codespaces.md).
 
-### 1. Install Required Tools
+## 1. Install Tools
 
-Install Command Line Tools:
+1. Install Apple Command Line Tools:
 
-```bash
-xcode-select --install
-```
+   ```bash
+   xcode-select --install
+   ```
 
-Install:
+2. Install Node.js from [nodejs.org](https://nodejs.org/).
+3. Install VS Code or Antigravity.
 
-- Node.js from [nodejs.org](https://nodejs.org/)
-- VS Code or Antigravity
-
-### 2. Clone The Repository
+## 2. Clone The Repo
 
 ```bash
 mkdir -p ~/Documents/workSpace
@@ -24,51 +22,38 @@ git clone git@github.com:ashifulalam/ps-env-setup.git playGround
 cd playGround
 ```
 
-### 3. Verify Tools
-
-```bash
-g++ --version
-node --version
-bash --version
-```
-
-### 4. Run Setup Checker
+## 3. Check Setup
 
 ```bash
 chmod +x scripts/setup-check.sh
 ./scripts/setup-check.sh
 ```
 
-### 5. Open The Workspace
+The checker verifies `g++`, `node`, and `bash`.
 
-Open the workspace file, not only the folder:
+## 4. Open The Workspace
+
+Open the workspace file:
 
 ```bash
 code cppWorkspace.code-workspace
 ```
 
-If `code` does not work:
+If `code` is missing:
 
 1. Open VS Code.
 2. Press `Cmd + Shift + P`.
 3. Run `Shell Command: Install 'code' command in PATH`.
-4. Close and reopen the terminal.
-5. Run:
-   ```bash
-   code cppWorkspace.code-workspace
-   ```
+4. Restart the terminal.
+5. Run `code cppWorkspace.code-workspace` again.
 
-### 6. Install C/C++ Extension
-
-If VS Code asks to install the Microsoft C/C++ extension, install it.
-
-If it does not ask:
+## 5. Install C++ Extension
 
 1. Open Extensions.
 2. Search `C/C++`.
-3. Install the Microsoft extension.
+3. Install the Microsoft C/C++ extension.
 
-### 7. Add Terminal Shortcuts
+## 6. Add Optional Terminal Shortcuts
 
 Open `~/.zshrc`:
 
@@ -83,22 +68,13 @@ alias ps='cd ~/Documents/workSpace/playGround'
 alias np='cd ~/Documents/workSpace/playGround && node .vscode/new-problem.js'
 ```
 
-Reload shell:
+Reload:
 
 ```bash
 source ~/.zshrc
 ```
 
-Check:
-
-```bash
-ps
-np
-```
-
-Use `Ctrl + C` to cancel `np` if you are only testing.
-
-### 8. Set Cmd + R Shortcut
+## 7. Add Optional `Cmd + R` Run Shortcut
 
 1. Press `Cmd + K`, then `Cmd + S`.
 2. Search `Tasks: Run Build Task`.
@@ -106,42 +82,11 @@ Use `Ctrl + C` to cancel `np` if you are only testing.
 4. Press `Cmd + R`.
 5. Press Enter.
 
-If VS Code shows a conflict:
+If there is a conflict, remove `Cmd + R` from `Developer: Reload Window`, then set it again for `Tasks: Run Build Task`.
 
-1. Search `Developer: Reload Window`.
-2. Right-click its `Cmd + R` keybinding.
-3. Choose `Remove Keybinding`.
-4. Set `Cmd + R` for `Tasks: Run Build Task` again.
+## 8. Test The Runner
 
-### 9. Test Run
-
-1. Open a `.cpp` or `.js` file.
+1. Open `testcpp.cpp` or `testJS.js`.
 2. Put sample input in `input.txt`.
-3. Press `Cmd + R`.
+3. Press `Cmd + R` or `Cmd + Shift + B`.
 4. Check `output.txt`.
-
-### 10. Create A New Problem
-
-From VS Code:
-
-```text
-Cmd + Shift + P
-Tasks: Run Task
-New Problem
-```
-
-From terminal:
-
-```bash
-np
-```
-
-## Workspace
-
-Open `cppWorkspace.code-workspace`.
-
-Recommended layout:
-
-- Open `testcpp.cpp` or `testJS.js` on the left.
-- Open `input.txt` on the top right.
-- Open `output.txt` on the bottom right.

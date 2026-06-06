@@ -1,12 +1,14 @@
 # Gemini Complexity Estimate
 
-Optional AI estimate after a successful run.
+This is optional. When enabled, Gemini estimates time and space complexity after a successful run.
 
-## Setup
+## 1. Create Local Config
 
 ```bash
 cp config/.env.example config/.env
 ```
+
+## 2. Add Your API Key
 
 Edit `config/.env`:
 
@@ -19,13 +21,29 @@ COMPLEXITY_CACHE_ENABLED=true
 
 Keep real API keys only in `config/.env`. It is ignored by git.
 
-## Options
+## 3. Configure Options
 
-- `COMPLEXITY_ENABLED=false` disables Gemini.
-- `COMPLEXITY_CACHE_ENABLED=true` reuses estimates for unchanged code.
-- Cache file: `config/.complexity-cache.json`.
+```text
+COMPLEXITY_ENABLED=false
+```
 
-## Output
+Disables Gemini.
+
+```text
+COMPLEXITY_CACHE_ENABLED=true
+```
+
+Reuses estimates for unchanged code.
+
+Cache file:
+
+```text
+config/.complexity-cache.json
+```
+
+## 4. Read Output
+
+Example:
 
 ```text
 Estimated complexity
@@ -34,4 +52,4 @@ Space    : O(n)
 Reason   : The solution scans the array once and stores seen values in a map.
 ```
 
-This is an estimate, not a proof.
+Treat this as an estimate, not a proof.

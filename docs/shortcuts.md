@@ -1,23 +1,26 @@
-# Shortcut Guide
+# Shortcuts
 
-| Where you are using it | Run shortcut | Notes |
-| --- | --- | --- |
-| Mac app | `Cmd + R` | Custom local shortcut after setup. |
-| Mac app backup | `Cmd + Shift + B` | VS Code default build task shortcut. |
-| Windows app | `Ctrl + Shift + B` | VS Code default build task shortcut. |
-| Mac browser | `Cmd + Shift + B` | GitHub Codespaces shortcut. |
-| Windows browser | `Ctrl + Shift + B` | GitHub Codespaces shortcut. |
+## Run Shortcuts
 
-## macOS Cmd + R
+| Environment | Shortcut |
+| --- | --- |
+| macOS local custom shortcut | `Cmd + R` |
+| macOS local default task | `Cmd + Shift + B` |
+| Windows/Linux local default task with Bash | `Ctrl + Shift + B` |
+| Codespaces on macOS | `Cmd + Shift + B` |
+| Codespaces on Windows/Linux | `Ctrl + Shift + B` |
 
-To set `Cmd + R` as the local run shortcut:
+## Set `Cmd + R` On macOS
 
-1. Open Keyboard Shortcuts with `Cmd + K`, then `Cmd + S`.
-2. Search for `Tasks: Run Build Task`.
-3. Click the pencil icon beside `Tasks: Run Build Task`.
-4. Press `Cmd + R`, then press Enter.
-5. If VS Code shows a conflict with `Developer: Reload Window`, search for that command.
-6. Right-click the `Cmd + R` keybinding for `Developer: Reload Window`.
-7. Choose `Remove Keybinding`.
+1. Press `Cmd + K`, then `Cmd + S`.
+2. Search `Tasks: Run Build Task`.
+3. Click the pencil icon.
+4. Press `Cmd + R`.
+5. Press Enter.
 
-`Cmd + R` now runs the active problem and updates `output.txt`.
+If VS Code reports a conflict:
+
+1. Search `Developer: Reload Window`.
+2. Right-click its `Cmd + R` keybinding.
+3. Choose `Remove Keybinding`.
+4. Set `Cmd + R` for `Tasks: Run Build Task` again.

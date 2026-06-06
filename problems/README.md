@@ -1,14 +1,27 @@
 # Problems
 
-Use this folder to keep solved problems organized.
+Store solved problems here.
 
-Example names:
+## Suggested Layout
 
 ```text
-two-sum.cpp
-two-sum.js
-binary-search.cpp
-valid-anagram.js
+problems/<platform>/<problem-name>.cpp
+problems/<platform>/<problem-name>.js
 ```
 
-The runner can execute files from this folder when they are the active file in VS Code. If your cursor is in `input.txt`, the runner falls back to the most recently modified `.cpp` or `.js` file in the playground.
+Examples:
+
+```text
+problems/leetcode/two-sum.cpp
+problems/codewars/valid-anagram.js
+problems/nsups/a-solve-me-first.cpp
+```
+
+## Run A Saved Problem
+
+1. Open the `.cpp` or `.js` file.
+2. Put sample input in the workspace-root `input.txt`.
+3. Run the build task.
+4. Read the workspace-root `output.txt`.
+
+If `input.txt` or `output.txt` is active, the runner reuses the current problem file.

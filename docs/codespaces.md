@@ -1,27 +1,27 @@
-# Codespaces Guide
+# Codespaces
 
-The dev container includes C++, Node.js, and the recommended C/C++ extension.
+The dev container includes C++, Node.js, and the Microsoft C/C++ extension.
 
-## Open In Codespaces
+## 1. Open Codespaces
 
 1. Open the repository on GitHub.
-2. Select **Code**.
-3. Open the **Codespaces** tab.
-4. Select **Create codespace on master**.
+2. Click `Code`.
+3. Open the `Codespaces` tab.
+4. Click `Create codespace on master`.
 
-## Run
+## 2. Run A Problem
 
-1. Put sample input in `input.txt`.
-2. Open a `.cpp` or `.js` problem file.
-3. Press `Ctrl + Shift + B` on Windows/Linux, or `Cmd + Shift + B` on Mac.
-4. Check the result in `output.txt`.
+1. Open a `.cpp` or `.js` problem file.
+2. Put sample input in `input.txt`.
+3. Press `Cmd + Shift + B` on macOS or `Ctrl + Shift + B` on Windows/Linux.
+4. Check `output.txt`.
 
-Do not use `Ctrl + R` or `Cmd + R` in the browser; those usually reload the page.
+Do not use `Cmd + R` or `Ctrl + R` in the browser. Those usually reload the page.
 
-## Update
+## 3. Update Codespaces
 
 ```bash
 git pull
 ```
 
-Rebuild the container if Codespaces asks after pulling `.devcontainer` changes.
+If Codespaces asks to rebuild after `.devcontainer` changes, rebuild it.
