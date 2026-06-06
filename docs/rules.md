@@ -65,3 +65,44 @@ git status --short
 ```
 
 Commit only the files related to the current change.
+
+## 7. Commit Rules
+
+Do not bundle unrelated changes into one commit.
+
+1. Commit one solved problem, bug fix, setup change, or documentation change at a time.
+2. Stage only the files related to that specific change.
+3. Leave unrelated modified files unstaged.
+4. Before committing, check:
+
+   ```bash
+   git status --short
+   git diff --cached --stat
+   ```
+
+5. If a file is not part of the current problem or fix, do not include it in the commit.
+
+## 8. Commit Message Format
+
+Use this format for every commit:
+
+```text
+Clear title that explains the solved problem
+
+Detailed information:
+- What was broken or missing.
+- What changed.
+- Why this fixes the problem.
+- Any important notes for future review.
+```
+
+Example:
+
+```text
+Save dirty files before running active problem
+
+Detailed information:
+- VS Code was running old saved code when Cmd + R was pressed from workspace/input.txt or workspace/output.txt.
+- Added task.saveBeforeRun so dirty .cpp and .js files are saved before the runner starts.
+- This keeps the run output correct without manually saving the problem file first.
+```
