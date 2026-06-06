@@ -90,3 +90,5 @@ If there is a conflict, remove `Cmd + R` from `Developer: Reload Window`, then s
 2. Put sample input in `workspace/input.txt`.
 3. Press `Cmd + R` or `Cmd + Shift + B`.
 4. Check `workspace/output.txt`.
+
+The run task saves dirty files before executing, so unsaved edits in a `.cpp` or `.js` file are included.

@@ -1,5 +1,6 @@
 {
   "files.autoSave": "onFocusChange",
+  "task.saveBeforeRun": "always",
   "editor.wordWrap": "on",
   "[plaintext]": {
     "editor.fontSize": 18

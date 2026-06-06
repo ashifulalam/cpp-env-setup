@@ -9,6 +9,7 @@
 		"workbench.editor.enablePreview": false,
 		"workbench.editor.revealIfOpen": true,
 		"workbench.startupEditor": "none",
+		"task.saveBeforeRun": "always",
 		// Explorer cleanup for this workspace.
 		// true  = hide the matching file/folder from the Explorer.
 		// false = explicitly show it, even if another setting hides it.

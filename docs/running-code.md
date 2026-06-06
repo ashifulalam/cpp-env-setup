@@ -50,4 +50,4 @@ The terminal also prints the file, language, runtime, and failures.
 5. Editing and saving a non-empty problem file makes it the current runner target.
 6. If the active problem file is empty, the runner clears `workspace/input.txt` and `workspace/output.txt`.
 
-This workspace uses focus-based auto-save. When you run, VS Code saves the current file first.
+Before running a task, VS Code saves dirty files first. This keeps `Cmd + R` accurate even when `workspace/input.txt` or `workspace/output.txt` is active.
