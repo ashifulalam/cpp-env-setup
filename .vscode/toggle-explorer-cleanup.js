@@ -17,7 +17,7 @@ const excludeKeys = [
   "**/.vscode",
   "config",
   "docs",
-  "images",
+  "docs/images",
   "scripts",
   "problems/README.md",
   "**/README.md",

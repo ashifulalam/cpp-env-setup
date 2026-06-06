@@ -32,7 +32,7 @@
 			"**/.vscode": false,
 			"config": false,
 			"docs": false,
-			"images": false,
+			"docs/images": false,
 			"scripts": false,
 
 			// README files

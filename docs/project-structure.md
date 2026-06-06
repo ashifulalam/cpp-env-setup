@@ -64,6 +64,6 @@ problems/leetcode/
 ## Assets
 
 ```text
-images/                           README images
+docs/images/                      README and documentation images
 docs/                             workspace guides
 ```

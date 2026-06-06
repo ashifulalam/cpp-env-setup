@@ -2,7 +2,7 @@
 
 A minimal C++ and JavaScript problem-solving workspace for VS Code and GitHub Codespaces.
 
-![OneBugAway problem-solving workspace](images/one-bug-away-hero.svg)
+![OneBugAway problem-solving workspace](docs/images/one-bug-away-hero.svg)
 
 ## Quick Start
 
