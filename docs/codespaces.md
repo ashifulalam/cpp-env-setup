@@ -12,9 +12,9 @@ The dev container includes C++, Node.js, and the Microsoft C/C++ extension.
 ## 2. Run A Problem
 
 1. Open a `.cpp` or `.js` problem file.
-2. Put sample input in `input.txt`.
+2. Put sample input in `workspace/input.txt`.
 3. Press `Cmd + Shift + B` on macOS or `Ctrl + Shift + B` on Windows/Linux.
-4. Check `output.txt`.
+4. Check `workspace/output.txt`.
 
 Do not use `Cmd + R` or `Ctrl + R` in the browser. Those usually reload the page.
 

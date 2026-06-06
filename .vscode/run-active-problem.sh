@@ -2,9 +2,10 @@
 set -euo pipefail
 
 WORKSPACE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+IO_DIR="$WORKSPACE_DIR/workspace"
 ACTIVE_FILE="${1:-}"
-INPUT_FILE="$WORKSPACE_DIR/input.txt"
-OUTPUT_FILE="$WORKSPACE_DIR/output.txt"
+INPUT_FILE="$IO_DIR/input.txt"
+OUTPUT_FILE="$IO_DIR/output.txt"
 BIN_FILE="$WORKSPACE_DIR/output_bin"
 LAST_PROBLEM_FILE="$WORKSPACE_DIR/config/.last-problem-file"
 
@@ -37,8 +38,8 @@ file_mtime() {
 
 pick_latest_problem_file() {
   find \
-    "$WORKSPACE_DIR/testcpp.cpp" \
-    "$WORKSPACE_DIR/testJS.js" \
+    "$IO_DIR/testcpp.cpp" \
+    "$IO_DIR/testJS.js" \
     "$WORKSPACE_DIR/problems" \
     -type f \( -name "*.cpp" -o -name "*.js" \) \
     -not -path "*/templates/*" \
@@ -114,7 +115,7 @@ esac
 if [ -z "${PROBLEM_FILE:-}" ]; then
   if [ "${RUN_CONTEXT:-}" = "shared-io" ]; then
     echo "No saved .cpp or .js problem file was found."
-    echo "Save the current problem file once, then run again from input.txt or output.txt."
+    echo "Save the current problem file once, then run again from workspace/input.txt or workspace/output.txt."
   else
     echo "No .cpp or .js file found inside playGround."
   fi
@@ -122,8 +123,8 @@ if [ -z "${PROBLEM_FILE:-}" ]; then
 fi
 
 if [ ! -f "$INPUT_FILE" ]; then
-  echo "Runner error: input.txt was not found."
-  echo "Create input.txt in the playground folder and try again."
+  echo "Runner error: workspace/input.txt was not found."
+  echo "Create workspace/input.txt in the playground folder and try again."
   exit 1
 fi
 
@@ -131,7 +132,7 @@ if ! grep -q '[^[:space:]]' "$PROBLEM_FILE"; then
   > "$INPUT_FILE"
   > "$OUTPUT_FILE"
   printf "\n"
-  printf "Problem file is empty. Cleared input.txt and output.txt.\n"
+  printf "Problem file is empty. Cleared workspace/input.txt and workspace/output.txt.\n"
   exit 0
 fi
 

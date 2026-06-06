@@ -7,10 +7,10 @@ Use this as a map when changing the workspace.
 ```text
 README.md                         main entry point
 cppWorkspace.code-workspace       VS Code workspace settings
-input.txt                         shared sample input
-output.txt                        shared program output
-testcpp.cpp                       scratch C++ file
-testJS.js                         scratch JavaScript file
+workspace/input.txt               shared sample input
+workspace/output.txt              shared program output
+workspace/testcpp.cpp             scratch C++ file
+workspace/testJS.js               scratch JavaScript file
 ```
 
 ## Tooling

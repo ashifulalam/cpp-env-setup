@@ -18,7 +18,7 @@ Supported files:
 Put sample input in:
 
 ```text
-input.txt
+workspace/input.txt
 ```
 
 ## 3. Run
@@ -36,7 +36,7 @@ Use one shortcut:
 Program output is written to:
 
 ```text
-output.txt
+workspace/output.txt
 ```
 
 The terminal also prints the file, language, runtime, and failures.
@@ -45,9 +45,9 @@ The terminal also prints the file, language, runtime, and failures.
 
 1. Active `.cpp` files compile with `g++`.
 2. Active `.js` files run with Node.js.
-3. If `input.txt` or `output.txt` is active, the runner reuses the current problem file.
+3. If `workspace/input.txt` or `workspace/output.txt` is active, the runner reuses the current problem file.
 4. If there is no current problem file, the runner uses the most recently modified non-empty `.cpp` or `.js` file.
 5. Editing and saving a non-empty problem file makes it the current runner target.
-6. If the active problem file is empty, the runner clears `input.txt` and `output.txt`.
+6. If the active problem file is empty, the runner clears `workspace/input.txt` and `workspace/output.txt`.
 
 This workspace uses focus-based auto-save. When you run, VS Code saves the current file first.

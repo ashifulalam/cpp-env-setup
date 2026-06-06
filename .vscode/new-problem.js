@@ -4,14 +4,15 @@ const readline = require("readline");
 const { spawn } = require("child_process");
 
 const rootDir = path.join(__dirname, "..");
+const ioDir = path.join(rootDir, "workspace");
 const problemsDir = path.join(rootDir, "problems");
 const configDir = path.join(rootDir, "config");
 const templatesDir = path.join(problemsDir, "templates");
 const defaultsFile = path.join(configDir, "new-problem.defaults.json");
 const stateFile = path.join(configDir, ".new-problem-state.json");
 const lastProblemFile = path.join(configDir, ".last-problem-file");
-const inputFile = path.join(rootDir, "input.txt");
-const outputFile = path.join(rootDir, "output.txt");
+const inputFile = path.join(ioDir, "input.txt");
+const outputFile = path.join(ioDir, "output.txt");
 const templateFiles = {
   cpp: path.join(templatesDir, "cpp-template.cpp"),
   js: path.join(templatesDir, "js-template.js"),
@@ -216,6 +217,7 @@ async function main() {
   const content = renderTemplate(extension, meta);
 
   fs.writeFileSync(targetFile, content);
+  fs.mkdirSync(ioDir, { recursive: true });
   fs.writeFileSync(inputFile, "");
   fs.writeFileSync(outputFile, "");
   fs.writeFileSync(lastProblemFile, `${targetFile}\n`);
@@ -227,7 +229,7 @@ async function main() {
   console.log(`File     : ${path.relative(rootDir, targetFile)}`);
   console.log(`Folder   : ${folder}`);
   console.log(`Language : ${language}`);
-  console.log("Cleared  : input.txt, output.txt");
+  console.log("Cleared  : workspace/input.txt, workspace/output.txt");
 }
 
 main().catch((error) => {

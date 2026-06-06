@@ -8,9 +8,9 @@ A minimal C++ and JavaScript problem-solving workspace for VS Code and GitHub Co
 
 1. Open `cppWorkspace.code-workspace`.
 2. Open a `.cpp` or `.js` problem file.
-3. Put sample input in `input.txt`.
+3. Put sample input in `workspace/input.txt`.
 4. Run the build task.
-5. Read the result from `output.txt`.
+5. Read the result from `workspace/output.txt`.
 
 ## Run Shortcuts
 
@@ -22,7 +22,7 @@ A minimal C++ and JavaScript problem-solving workspace for VS Code and GitHub Co
 | Codespaces on macOS | `Cmd + Shift + B` |
 | Codespaces on Windows/Linux | `Ctrl + Shift + B` |
 
-After running a problem once, you can focus `input.txt` or `output.txt` and run again. The runner reuses the current problem file.
+After running a problem once, you can focus `workspace/input.txt` or `workspace/output.txt` and run again. The runner reuses the current problem file.
 
 ## Common Tasks
 
@@ -48,8 +48,8 @@ docs/                       Workspace guides
 problems/                   Saved problem solutions
 problems/templates/         New-problem templates
 scripts/setup-check.sh      macOS setup checker
-input.txt                   Shared sample input
-output.txt                  Shared program output
-testcpp.cpp                 Scratch C++ file
-testJS.js                   Scratch JavaScript file
+workspace/input.txt         Shared sample input
+workspace/output.txt        Shared program output
+workspace/testcpp.cpp       Scratch C++ file
+workspace/testJS.js         Scratch JavaScript file
 ```

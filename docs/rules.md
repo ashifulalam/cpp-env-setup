@@ -14,9 +14,9 @@ Do not open only the folder if you want the configured tasks and cleanup setting
 
 ## 2. Use Shared Input And Output
 
-1. Put sample input in `input.txt`.
+1. Put sample input in `workspace/input.txt`.
 2. Run the active `.cpp` or `.js` file.
-3. Read the result from `output.txt`.
+3. Read the result from `workspace/output.txt`.
 
 ## 3. Keep Problems Organized
 
@@ -49,8 +49,8 @@ config/.env
 config/.complexity-cache.json
 config/.last-problem-file
 config/.new-problem-state.json
-input.txt
-output.txt
+workspace/input.txt
+workspace/output.txt
 output_bin
 *.exe
 *.out

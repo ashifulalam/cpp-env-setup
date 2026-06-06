@@ -17,6 +17,8 @@ config/.env
 config/.complexity-cache.json
 config/.last-problem-file
 config/.new-problem-state.json
+workspace/input.txt
+workspace/output.txt
 ```
 
 Safe config template:

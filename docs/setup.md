@@ -86,7 +86,7 @@ If there is a conflict, remove `Cmd + R` from `Developer: Reload Window`, then s
 
 ## 8. Test The Runner
 
-1. Open `testcpp.cpp` or `testJS.js`.
-2. Put sample input in `input.txt`.
+1. Open `workspace/testcpp.cpp` or `workspace/testJS.js`.
+2. Put sample input in `workspace/input.txt`.
 3. Press `Cmd + R` or `Cmd + Shift + B`.
-4. Check `output.txt`.
+4. Check `workspace/output.txt`.

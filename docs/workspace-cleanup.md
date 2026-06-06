@@ -7,15 +7,15 @@ Cleanup hides workspace noise and clears shared input/output in specific cases.
 The runner clears these files when the active `.cpp` or `.js` file is empty:
 
 ```text
-input.txt
-output.txt
+workspace/input.txt
+workspace/output.txt
 ```
 
 The `Auto Clear Watcher` watches:
 
 ```text
-testJS.js
-testcpp.cpp
+workspace/testJS.js
+workspace/testcpp.cpp
 problems/**/*.cpp
 problems/**/*.js
 ```
@@ -23,7 +23,7 @@ problems/**/*.js
 Watcher behavior:
 
 1. A watched non-empty file becomes the current runner target when saved.
-2. A watched empty file clears `input.txt` and `output.txt`.
+2. A watched empty file clears `workspace/input.txt` and `workspace/output.txt`.
 
 ## Toggle Explorer Cleanup
 

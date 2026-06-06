@@ -2,17 +2,19 @@ const fs = require("fs");
 const path = require("path");
 
 const workspaceDir = path.join(__dirname, "..");
+const ioDir = path.join(workspaceDir, "workspace");
 const problemsDir = path.join(workspaceDir, "problems");
-const inputTxt = path.join(workspaceDir, "input.txt");
-const outputTxt = path.join(workspaceDir, "output.txt");
+const inputTxt = path.join(ioDir, "input.txt");
+const outputTxt = path.join(ioDir, "output.txt");
 const configDir = path.join(workspaceDir, "config");
 const lastProblemFile = path.join(configDir, ".last-problem-file");
-const rootScratchFiles = ["testJS.js", "testcpp.cpp"];
+const workspaceScratchFiles = ["testJS.js", "testcpp.cpp"];
 const watchedExtensions = new Set([".cpp", ".js"]);
 const ignoredDirectories = new Set([".git", "node_modules", "templates"]);
 const fileWatchers = new Map();
 
 function clearSharedIo() {
+  fs.mkdirSync(ioDir, { recursive: true });
   fs.writeFileSync(inputTxt, "");
   fs.writeFileSync(outputTxt, "");
 }
@@ -58,8 +60,9 @@ function collectWatchTargets(dir) {
 }
 
 function ensureRootScratchFiles() {
-  for (const file of rootScratchFiles) {
-    const filePath = path.join(workspaceDir, file);
+  fs.mkdirSync(ioDir, { recursive: true });
+  for (const file of workspaceScratchFiles) {
+    const filePath = path.join(ioDir, file);
     if (!fs.existsSync(filePath)) {
       fs.writeFileSync(filePath, "");
     }
@@ -96,7 +99,7 @@ function syncWatchers() {
   ensureRootScratchFiles();
 
   const desiredFiles = new Set([
-    ...rootScratchFiles.map((file) => path.join(workspaceDir, file)),
+    ...workspaceScratchFiles.map((file) => path.join(ioDir, file)),
     ...collectWatchTargets(problemsDir),
   ]);
 
@@ -115,4 +118,4 @@ function syncWatchers() {
 syncWatchers();
 setInterval(syncWatchers, 1500);
 
-console.log("Watching scratch files and problems/*.cpp|*.js for auto-clear...");
+console.log("Watching workspace scratch files and problems/*.cpp|*.js for auto-clear...");

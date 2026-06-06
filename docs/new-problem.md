@@ -43,8 +43,8 @@ problems/<folder>/<problem-title>.js
 
 It also:
 
-1. Clears `input.txt`.
-2. Clears `output.txt`.
+1. Clears `workspace/input.txt`.
+2. Clears `workspace/output.txt`.
 3. Remembers the new file as the current runner target.
 4. Tries to open the file in VS Code.
 

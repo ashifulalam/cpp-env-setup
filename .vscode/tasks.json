@@ -19,7 +19,7 @@
         },
         "background": {
           "activeOnStart": true,
-          "beginsPattern": "Watching testJS.js",
+          "beginsPattern": "Watching workspace scratch files",
           "endsPattern": "for auto-clear..."
         }
       }
@@ -27,7 +27,7 @@
     {
       "label": "Run Active Problem File",
       "type": "shell",
-      // Runs the active .cpp/.js file, or the latest .cpp/.js file when input.txt is active.
+      // Runs the active .cpp/.js file, or the latest .cpp/.js file when workspace/input.txt is active.
       "command": "sleep 0.2 && bash .vscode/run-active-problem.sh \"${file}\"",
       "group": {
         "kind": "build",
