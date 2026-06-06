@@ -17,27 +17,27 @@
 
 		"files.exclude": {
 			// Hidden files
-			"**/.DS_Store": true,
-			".env": true,
-			"**/.git": true,
-			"**/.gitignore": true,
+			"**/.DS_Store": false,
+			".env": false,
+			"**/.git": false,
+			"**/.gitignore": false,
 
 			// Generated build files
-			"**/output_bin": true,
-			"**/output_bin.exe": true,
-			"**/output_bin.dSYM": true,
+			"**/output_bin": false,
+			"**/output_bin.exe": false,
+			"**/output_bin.dSYM": false,
 
 			// Hidden folders
-			"**/.devcontainer": true,
-			"**/.vscode": true,
-			"config": true,
-			"docs": true,
-			"images": true,
-			"scripts": true,
+			"**/.devcontainer": false,
+			"**/.vscode": false,
+			"config": false,
+			"docs": false,
+			"images": false,
+			"scripts": false,
 
 			// README files
-			"problems/README.md": true,
-			"**/README.md": true
+			"problems/README.md": false,
+			"**/README.md": false
 		}
 	}
 }

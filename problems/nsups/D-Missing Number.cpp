@@ -7,11 +7,29 @@
  */
 
 #include <bits/stdc++.h>
+#include <codecvt>
 #include <vector>
 using namespace std;
 
 int main(){
     
+    int sum, missingNumber;
+    cin >> sum;
+    int num;
+    vector<int> numbers;
+    int totalSum = 0;
+
+    while (cin >> num){
+        numbers.push_back(num);
+    };
+
+    for(int i=0 ; i < numbers.size(); i++){
+        totalSum = totalSum + numbers[i];
+    }
+
+    missingNumber = sum - totalSum;
+
+    cout << missingNumber <<endl;
     
         
 }

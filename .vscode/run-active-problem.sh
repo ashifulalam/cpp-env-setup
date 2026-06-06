@@ -16,6 +16,17 @@ format_duration() {
   awk "BEGIN { printf \"%.3fs\", $1 / 1000 }"
 }
 
+relative_path() {
+  case "$1" in
+    "$WORKSPACE_DIR"/*)
+      printf "%s\n" "${1#"$WORKSPACE_DIR"/}"
+      ;;
+    *)
+      printf "%s\n" "$1"
+      ;;
+  esac
+}
+
 file_mtime() {
   if stat -f "%m" "$1" >/dev/null 2>&1; then
     stat -f "%m" "$1"
@@ -25,10 +36,12 @@ file_mtime() {
 }
 
 pick_latest_problem_file() {
-  find "$WORKSPACE_DIR" \
+  find \
+    "$WORKSPACE_DIR/testcpp.cpp" \
+    "$WORKSPACE_DIR/testJS.js" \
+    "$WORKSPACE_DIR/problems" \
     -type f \( -name "*.cpp" -o -name "*.js" \) \
-    -not -path "*/.git/*" \
-    -not -path "*/node_modules/*" \
+    -not -path "*/templates/*" \
     -print0 |
     while IFS= read -r -d '' file; do
       if ! grep -q '[^[:space:]]' "$file"; then
@@ -89,15 +102,22 @@ pick_problem_for_shared_io() {
 
 case "$ACTIVE_FILE" in
   *.cpp | *.js)
+    RUN_CONTEXT="active-file"
     PROBLEM_FILE="$ACTIVE_FILE"
     ;;
   *)
+    RUN_CONTEXT="shared-io"
     PROBLEM_FILE="$(pick_problem_for_shared_io)"
     ;;
 esac
 
 if [ -z "${PROBLEM_FILE:-}" ]; then
-  echo "No .cpp or .js file found inside playGround."
+  if [ "${RUN_CONTEXT:-}" = "shared-io" ]; then
+    echo "No saved .cpp or .js problem file was found."
+    echo "Save the current problem file once, then run again from input.txt or output.txt."
+  else
+    echo "No .cpp or .js file found inside playGround."
+  fi
   exit 1
 fi
 
@@ -117,9 +137,12 @@ fi
 
 remember_problem_file
 
+RELATIVE_PROBLEM_FILE="$(relative_path "$PROBLEM_FILE")"
+
 print_result() {
   printf "\n"
-  printf "Problem runner finished\n"
+  printf "Problem runner finished ✅\n"
+  printf "Running  : %s\n" "$RELATIVE_PROBLEM_FILE"
   printf "Language : %s\n" "$1"
   printf "File     : %s\n" "$(basename "$PROBLEM_FILE")"
   printf "Runtime  : %s\n" "$(format_duration "$2")"
@@ -127,6 +150,7 @@ print_result() {
 
 print_failure() {
   printf "\n"
+  printf "Running  : %s\n" "$RELATIVE_PROBLEM_FILE"
   printf "Problem runner failed\n"
   printf "Language : %s\n" "$1"
   printf "File     : %s\n" "$(basename "$PROBLEM_FILE")"

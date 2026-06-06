@@ -21,23 +21,14 @@ main();
 
 async function main() {
   if (!complexityEnabled) {
-    console.log("");
-    console.log("Estimated complexity skipped");
-    console.log("Reason   : COMPLEXITY_ENABLED is false");
     return;
   }
 
   if (!apiKey) {
-    console.log("");
-    console.log("Estimated complexity skipped");
-    console.log("Reason   : GEMINI_API_KEY is not set");
     return;
   }
 
   if (!filePath || !fs.existsSync(filePath)) {
-    console.log("");
-    console.log("Estimated complexity skipped");
-    console.log("Reason   : Problem file was not found");
     return;
   }
 

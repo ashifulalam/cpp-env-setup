@@ -28,7 +28,7 @@
       "label": "Run Active Problem File",
       "type": "shell",
       // Runs the active .cpp/.js file, or the latest .cpp/.js file when input.txt is active.
-      "command": "bash .vscode/run-active-problem.sh \"${file}\"",
+      "command": "sleep 0.2 && bash .vscode/run-active-problem.sh \"${file}\"",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -36,7 +36,7 @@
       "presentation": {
         "reveal": "always",
         "panel": "shared",
-        "focus": false,
+        "focus": true,
         "echo": false
       },
       "problemMatcher": "$gcc"

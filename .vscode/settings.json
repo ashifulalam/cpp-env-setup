@@ -1,4 +1,5 @@
 {
+  "files.autoSave": "onFocusChange",
   "editor.wordWrap": "on",
   "[plaintext]": {
     "editor.fontSize": 18

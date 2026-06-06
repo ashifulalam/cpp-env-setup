@@ -36,6 +36,7 @@ After running a problem once, you can focus `input.txt` or `output.txt` and run 
 8. Check project files: [docs/project-structure.md](docs/project-structure.md)
 9. Manage Explorer cleanup: [docs/workspace-cleanup.md](docs/workspace-cleanup.md)
 10. Check git safety: [docs/git-safety.md](docs/git-safety.md)
+11. Follow workspace rules: [docs/rules.md](docs/rules.md)
 
 ## Project Map
 

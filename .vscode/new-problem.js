@@ -6,11 +6,16 @@ const { spawn } = require("child_process");
 const rootDir = path.join(__dirname, "..");
 const problemsDir = path.join(rootDir, "problems");
 const configDir = path.join(rootDir, "config");
+const templatesDir = path.join(problemsDir, "templates");
 const defaultsFile = path.join(configDir, "new-problem.defaults.json");
 const stateFile = path.join(configDir, ".new-problem-state.json");
 const lastProblemFile = path.join(configDir, ".last-problem-file");
 const inputFile = path.join(rootDir, "input.txt");
 const outputFile = path.join(rootDir, "output.txt");
+const templateFiles = {
+  cpp: path.join(templatesDir, "cpp-template.cpp"),
+  js: path.join(templatesDir, "js-template.js"),
+};
 
 const defaults = readJson(defaultsFile, {
   folders: ["nsups", "codewars"],
@@ -133,12 +138,18 @@ function today() {
   return `${value("day")} ${value("month")} ${value("year")}`;
 }
 
-function cppTemplate({ title, link, date }) {
-  return `/*\n * Problem  : ${title}\n * Link     : ${link}\n * Date     : ${date}\n * Resources:\n *   -\n */\n\n#include <bits/stdc++.h>\nusing namespace std;\n\nint main(){\n    \n    return 0;\n}\n`;
-}
+function renderTemplate(language, meta) {
+  const templateFile = templateFiles[language];
 
-function jsTemplate({ title, link, date }) {
-  return `/*\n * Problem  : ${title}\n * Link     : ${link}\n * Date     : ${date}\n * Resources:\n *   -\n */\n\nconst fs = require("fs");\nconst input = fs.readFileSync(0, "utf8").trim().split(/\\s+/);\n\nfunction main() {\n    \n}\n\nmain();\n`;
+  if (!templateFile || !fs.existsSync(templateFile)) {
+    throw new Error(`Template file is missing for language: ${language}`);
+  }
+
+  return fs
+    .readFileSync(templateFile, "utf8")
+    .replace(/\{\{TITLE\}\}/g, meta.title)
+    .replace(/\{\{LINK\}\}/g, meta.link)
+    .replace(/\{\{DATE\}\}/g, meta.date);
 }
 
 function openInEditor(file) {
@@ -202,7 +213,7 @@ async function main() {
   fs.mkdirSync(targetDir, { recursive: true });
 
   const meta = { title, link, date: today() };
-  const content = extension === "js" ? jsTemplate(meta) : cppTemplate(meta);
+  const content = renderTemplate(extension, meta);
 
   fs.writeFileSync(targetFile, content);
   fs.writeFileSync(inputFile, "");
